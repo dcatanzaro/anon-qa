@@ -3,6 +3,7 @@
 Anon Q&A es un proyecto hecho en Next.JS con Express.JS y MongoDB para hacer preguntas y respuestas de manera anónima.
 
 **Demo:** https://anon.damiancatanzaro.com/
+
 **Autor:** [@DamianCatanzaro](https://twitter.com/DamianCatanzaro)
 
 ## Requerimientos
@@ -13,7 +14,7 @@ Anon Q&A es un proyecto hecho en Next.JS con Express.JS y MongoDB para hacer pre
 ## Instalación
 
 ```
-git clone
+git clone https://github.com/dcatanzaro/anon-qa
 ```
 
 ## Instalación de paquetes de NPM
