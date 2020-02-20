@@ -75,7 +75,7 @@ npm run start
 ## Para correr el entorno de producción con Docker
 
 ```
-docker-compose up -d --build;
+docker-compose up -d --build
 ```
 
 ## Para responder preguntas
