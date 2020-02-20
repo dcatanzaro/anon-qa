@@ -74,7 +74,7 @@ npm run start
 
 ## Para correr el entorno de producción con Docker
 
-````
+```
 docker-compose up -d --build;
 ```
 
@@ -91,4 +91,7 @@ docker-compose up -d --build;
 ```
 http://localhost:3000?isAdmin=true&password=nuestra_password
 ```
-````
+
+```
+
+```
