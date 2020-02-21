@@ -9,7 +9,8 @@ class InputText extends React.Component {
 
         this.state = {
             question: "",
-            loading: false
+            loading: false,
+            sent: false
         };
     }
 
@@ -33,19 +34,42 @@ class InputText extends React.Component {
         });
 
         this.setState({
-            loading: false
+            sent: true
         });
 
         loadNewQuestions();
     };
 
+    newQuestion = () => {
+        this.setState({
+            sent: false,
+            loading: false
+        });
+    };
+
     render() {
-        const { question, loading } = this.state;
+        const { question, loading, sent } = this.state;
+
+        let loadingText = "Enviando...";
+
+        if (sent) {
+            loadingText = "La pregunta fue enviada.";
+
+            if (process.env.SHOW_QUESTIONS_WITHOUT_ANSWER) {
+                loadingText +=
+                    " En cuanto sea respondida va a aparecer de manera pública.";
+            }
+        }
 
         return (
             <header className={style.inputText}>
                 {loading ? (
-                    <div>Enviando...</div>
+                    <div className={style.loading}>
+                        <span>{loadingText}</span>
+                        <button onClick={this.newQuestion}>
+                            Enviar nueva pregunta
+                        </button>
+                    </div>
                 ) : (
                     <>
                         <textarea

@@ -40,8 +40,36 @@ class QuestionsController {
         return res.json(result);
     };
 
+    deleteQuestion = async (req, res) => {
+        const { idQuestion, password } = req.body;
+
+        if (password != process.env.PASSWORD_EDITOR) {
+            return res.json({});
+        }
+
+        const result = await Questions.updateOne(
+            { _id: idQuestion },
+            { $set: { deleted: true } }
+        );
+
+        return res.json(result);
+    };
+
     getQuestions = async (req, res) => {
-        const questions = await Questions.find().sort({ createdAt: -1 });
+        const password = req.query.password;
+
+        let query = { deleted: null };
+
+        if (
+            process.env.SHOW_QUESTIONS_WITHOUT_ANSWER === "false" &&
+            password != process.env.PASSWORD_EDITOR
+        ) {
+            query.answer = { $ne: null };
+        }
+
+        const questions = await Questions.find(query).sort({
+            createdAt: -1
+        });
 
         return res.json(questions);
     };

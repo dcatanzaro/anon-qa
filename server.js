@@ -23,6 +23,8 @@ if (process.env.DB_USER) {
     urlMongo = `mongodb://${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`;
 }
 
+mongoose.set("useCreateIndex", true);
+
 mongoose.connect(urlMongo, {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -61,6 +63,7 @@ app.prepare().then(() => {
 
     server.post("/api/send_question", QuestionInstance.sendQuestion);
     server.post("/api/send_answer", QuestionInstance.sendAnswer);
+    server.post("/api/delete_question", QuestionInstance.deleteQuestion);
     server.get("/api/questions", QuestionInstance.getQuestions);
 
     server.use(handler);

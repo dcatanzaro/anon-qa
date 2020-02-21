@@ -51,6 +51,22 @@
         white-space: pre-wrap;
     }
 
+    .buttons {
+        display: flex;
+
+        button {
+            &:first-child {
+                margin-right: 10px;
+            }
+        }
+    }
+
+    .dangerButton {
+        width: 40%;
+        color: #570011;
+        background-color: #e64c41;
+    }
+
     button {
         padding: 8px 32px;
         font-size: 16px;
@@ -60,6 +76,7 @@
         width: 100%;
         border-radius: 4px;
         margin-top: 8px;
+        cursor: pointer;
     }
 
     textarea {

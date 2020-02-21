@@ -12,9 +12,7 @@ class Question extends React.Component {
 
         this.state = {
             openTextInput: false,
-            answer: "",
-            isAdmin: false,
-            password: ""
+            answer: ""
         };
     }
 
@@ -28,8 +26,8 @@ class Question extends React.Component {
     };
 
     sendAnswer = async idQuestion => {
-        const { answer, password } = this.state;
-        const { loadNewQuestions } = this.props;
+        const { answer } = this.state;
+        const { loadNewQuestions, password } = this.props;
 
         if (!answer.length) {
             return;
@@ -64,18 +62,28 @@ class Question extends React.Component {
         return queryParams;
     };
 
-    componentDidMount() {
-        const arQueries = this.queryConvert();
+    deleteMessage = async idQuestion => {
+        const { loadNewQuestions, password } = this.props;
 
-        this.setState({
-            isAdmin: arQueries.isAdmin,
-            password: arQueries.password
-        });
-    }
+        const confirmDelete = confirm(
+            `¿Estás seguro que querés borrar el mensaje?`
+        );
+
+        if (confirmDelete) {
+            const url = `${process.env.URL}/api/delete_question`;
+
+            const result = await axios.post(url, {
+                password,
+                idQuestion
+            });
+
+            loadNewQuestions();
+        }
+    };
 
     render() {
-        const { question } = this.props;
-        const { openTextInput, answer, isAdmin } = this.state;
+        const { question, isAdmin } = this.props;
+        const { openTextInput, answer } = this.state;
 
         return (
             <section className={style.questionContainer}>
@@ -96,9 +104,19 @@ class Question extends React.Component {
                     )}
                     {isAdmin &&
                         (!openTextInput ? (
-                            <button onClick={this.openTextInput}>
-                                {!question.answer ? "Responder" : "Editar"}
-                            </button>
+                            <div className={style.buttons}>
+                                <button onClick={this.openTextInput}>
+                                    {!question.answer ? "Responder" : "Editar"}
+                                </button>
+                                <button
+                                    className={style.dangerButton}
+                                    onClick={() =>
+                                        this.deleteMessage(question._id)
+                                    }
+                                >
+                                    Borrar
+                                </button>
+                            </div>
                         ) : (
                             <>
                                 <textarea
