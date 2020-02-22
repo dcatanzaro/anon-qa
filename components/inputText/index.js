@@ -55,7 +55,7 @@ class InputText extends React.Component {
         if (sent) {
             loadingText = "La pregunta fue enviada.";
 
-            if (process.env.SHOW_QUESTIONS_WITHOUT_ANSWER) {
+            if (process.env.SHOW_QUESTIONS_WITHOUT_ANSWER === "false") {
                 loadingText +=
                     " En cuanto sea respondida va a aparecer de manera pública.";
             }
