@@ -6,7 +6,7 @@ Anon Q&A es un proyecto hecho en Next.JS con Express.JS y MongoDB para hacer pre
 
 **Autor:** [@DamianCatanzaro](https://twitter.com/DamianCatanzaro)
 
-[![Invitame un café en cafecito.app](https://cdn.cafecito.app/imgs/buttons/button_5.png)](https://cafecito.app/dcatanzaro)
+[![Invitame un café en cafecito.app](https://cdn.cafecito.app/imgs/buttons/button_5.svg)](https://cafecito.app/dcatanzaro)
 
 ## Requerimientos
 
