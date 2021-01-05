@@ -9,7 +9,7 @@
     },
     "dependencies": {
         "@zeit/next-sass": "^1.0.1",
-        "axios": "^0.19.2",
+        "axios": "^0.21.1",
         "body-parser": "^1.19.0",
         "compression": "^1.7.4",
         "dayjs": "^1.8.20",
